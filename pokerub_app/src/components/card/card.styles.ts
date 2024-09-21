@@ -8,6 +8,8 @@ export const style = StyleSheet.create({
     borderRadius: 10,
     display: "flex",
     flexDirection: "row",
+    marginBottom: 10,
+    margin: "auto",
   },
   infoSection: {
     width: "60%",
