@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   Text,
   View,
@@ -58,31 +58,34 @@ export default function PokemonListScreen() {
     fetchPokemonList();
   }, [paginationLink]);
 
-  const debouncedSearch = debounce(async (text) => {
-    if (text) {
-      try {
-        setIsLoading(true);
-        const pokemonData = await getPokemon(text.toLowerCase());
+  const debouncedSearch = useCallback(
+    debounce(async (text) => {
+      if (text) {
+        try {
+          setIsLoading(true);
+          const pokemonData = await getPokemon(text.toLowerCase());
 
-        if (pokemonData) {
-          setFilteredPokemonList([pokemonData]);
-        } else {
+          if (pokemonData) {
+            setFilteredPokemonList([pokemonData]);
+          } else {
+            setFilteredPokemonList([]);
+          }
+        } catch (error) {
+          console.error("Error searching Pokémon:", error);
           setFilteredPokemonList([]);
+        } finally {
+          setIsLoading(false);
         }
-      } catch (error) {
-        console.error("Error searching Pokémon:", error);
-        setFilteredPokemonList([]);
-      } finally {
-        setIsLoading(false);
+      } else {
+        setFilteredPokemonList(pokemonList);
       }
-    } else {
-      setFilteredPokemonList(pokemonList);
-    }
-  }, 500);
+    }, 500),
+    [pokemonList]
+  );
 
   useEffect(() => {
     debouncedSearch(searchText);
-  }, [searchText, pokemonList]);
+  }, [searchText, debouncedSearch]);
 
   const handlePagination = (link: string, direction: string) => {
     setCurrentPage((prev) => (direction === "next" ? prev + 1 : prev - 1));
