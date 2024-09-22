@@ -43,6 +43,7 @@ export const style = StyleSheet.create({
   favoriteIcon: {
     marginLeft: 10,
     justifyContent: "center",
+    zIndex: 1,
   },
   star: {
     height: 30,
