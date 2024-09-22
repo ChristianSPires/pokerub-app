@@ -140,7 +140,9 @@ export default function PokemonListScreen() {
             </View>
           </TouchableOpacity>
         </View>
-        {filteredPokemonList.length > 0 ? (
+        {isLoading ? (
+          <Text style={style.loadingText}>Loading ...</Text>
+        ) : filteredPokemonList.length > 0 ? (
           filteredPokemonList.map((pokemon: PokemonResponseType, index) => (
             <Card key={index} {...pokemon} />
           ))

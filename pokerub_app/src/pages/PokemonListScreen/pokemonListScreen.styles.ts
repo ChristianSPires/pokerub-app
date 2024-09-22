@@ -65,4 +65,8 @@ export const style = StyleSheet.create({
   disabledButton: {
     opacity: 0.25,
   },
+  loadingText: {
+    fontSize: 24,
+    fontWeight: "500",
+  },
 });
