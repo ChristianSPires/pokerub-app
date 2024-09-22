@@ -1,10 +1,12 @@
 import React from "react";
 import { Modal, View, Text, TouchableOpacity } from "react-native";
 import { style } from "./infoModal.styles";
+import { capitalize } from "../../../utils/strings";
 
 const InfoModal = ({
   visible,
   onClose,
+  name,
   pokemonType,
   height,
   weight,
@@ -20,7 +22,7 @@ const InfoModal = ({
     >
       <View style={style.modalContainer}>
         <View style={style.modalContent}>
-          <Text style={style.modalTitle}>Eevee Info</Text>
+          <Text style={style.modalTitle}>{capitalize(name)} Info</Text>
           <Text style={style.modalText}>Type: {pokemonType}</Text>
           <Text style={style.modalText}>Height: {height}</Text>
           <Text style={style.modalText}>Weight: {weight}</Text>
