@@ -31,4 +31,10 @@ export const style = StyleSheet.create({
   textButton: {
     color: "#fff",
   },
+  evolutionCardsBox: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 15,
+    marginBottom: 15,
+  },
 });

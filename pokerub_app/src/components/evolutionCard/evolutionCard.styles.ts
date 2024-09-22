@@ -6,11 +6,11 @@ export const style = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: 20,
+    gap: 8,
     margin: "auto",
   },
   beforeEvolution: {
-    backgroundColor: "#e2e2e2",
+    backgroundColor: "#ececec",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 30,
@@ -28,12 +28,13 @@ export const style = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#e2e2e2",
+    backgroundColor: "#ececec",
     padding: 10,
     borderRadius: 30,
+    width: 70,
   },
   evolveText: {
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: "400",
     textAlign: "center",
   },
@@ -42,7 +43,7 @@ export const style = StyleSheet.create({
     width: 20,
   },
   afterEvolution: {
-    backgroundColor: "#e2e2e2",
+    backgroundColor: "#ececec",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 30,
@@ -55,5 +56,10 @@ export const style = StyleSheet.create({
   pokemonNameAfterEvolution: {
     fontSize: 18,
     fontWeight: "500",
+  },
+  active: {
+    borderColor: "yellow",
+    backgroundColor: "#c8c8c8",
+    borderWidth: 1,
   },
 });
