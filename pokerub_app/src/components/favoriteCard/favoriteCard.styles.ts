@@ -11,9 +11,9 @@ export const style = StyleSheet.create({
     borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.75,
-    shadowRadius: 7,
-    elevation: 20,
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    elevation: 6,
   },
   imageSection: {},
   image: {
