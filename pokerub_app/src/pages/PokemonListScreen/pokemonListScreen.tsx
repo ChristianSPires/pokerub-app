@@ -5,7 +5,6 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  Alert,
   ScrollView,
 } from "react-native";
 import { style } from "./pokemonListScreen.styles";
@@ -14,6 +13,7 @@ import Card from "../../components/card/card";
 import { getPokemon, getPokemonList } from "../../services/pokemonService";
 import { PokemonResponseType } from "../../types/pokemon";
 import simpleArrow from "../../assets/simpleArrow.png";
+import { debounce } from "lodash";
 
 export default function PokemonListScreen() {
   const [pokemonList, setPokemonList] = useState<PokemonResponseType[]>([]);
@@ -58,31 +58,30 @@ export default function PokemonListScreen() {
     fetchPokemonList();
   }, [paginationLink]);
 
-  useEffect(() => {
-    async function handleSearch() {
-      if (searchText) {
-        try {
-          setIsLoading(true);
+  const debouncedSearch = debounce(async (text) => {
+    if (text) {
+      try {
+        setIsLoading(true);
+        const pokemonData = await getPokemon(text.toLowerCase());
 
-          const pokemonData = await getPokemon(searchText.toLowerCase());
-
-          if (pokemonData) {
-            setFilteredPokemonList([pokemonData]);
-          } else {
-            setFilteredPokemonList([]);
-          }
-        } catch (error) {
-          console.error("Error searching Pokémon:", error);
+        if (pokemonData) {
+          setFilteredPokemonList([pokemonData]);
+        } else {
           setFilteredPokemonList([]);
-        } finally {
-          setIsLoading(false);
         }
-      } else {
-        setFilteredPokemonList(pokemonList);
+      } catch (error) {
+        console.error("Error searching Pokémon:", error);
+        setFilteredPokemonList([]);
+      } finally {
+        setIsLoading(false);
       }
+    } else {
+      setFilteredPokemonList(pokemonList);
     }
+  }, 500);
 
-    handleSearch();
+  useEffect(() => {
+    debouncedSearch(searchText);
   }, [searchText, pokemonList]);
 
   const handlePagination = (link: string, direction: string) => {
