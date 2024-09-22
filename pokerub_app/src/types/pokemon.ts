@@ -1,6 +1,7 @@
 type PokemonType = {
   id: number | string;
   name: string;
+  species: { name: string };
   types: Array<{ slot: number; type: { name: string; url: string } }>;
   height: number;
   weight: number;
@@ -14,4 +15,9 @@ type PokemonResponseType = {
   url: string;
 };
 
-export { PokemonType, PokemonResponseType };
+type PokemonEvolutionChainType = {
+  species: string;
+  evolves_to: string;
+};
+
+export { PokemonType, PokemonResponseType, PokemonEvolutionChainType };
