@@ -39,6 +39,9 @@ export const style = StyleSheet.create({
   },
   paginationBox: {
     display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "auto",
     flexDirection: "row",
     width: "30%",
     height: 40,
