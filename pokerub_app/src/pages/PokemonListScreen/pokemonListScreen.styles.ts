@@ -37,4 +37,32 @@ export const style = StyleSheet.create({
     height: 30,
     marginLeft: 10,
   },
+  paginationBox: {
+    display: "flex",
+    flexDirection: "row",
+    width: "30%",
+    height: 40,
+    gap: 10,
+  },
+  paginationCollumn: {
+    width: "33%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  backArrow: {
+    height: 20,
+    width: 20,
+    transform: [{ rotate: "180deg" }],
+  },
+  frontArrow: {
+    height: 20,
+    width: 20,
+  },
+  paginationNumber: {
+    fontSize: 16,
+    fontWeight: "500",
+  },
+  disabledButton: {
+    opacity: 0.25,
+  },
 });
